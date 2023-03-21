@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Wrapper from "../Helpers/Wrapper";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import Modal from "../UI/Modal";
@@ -10,6 +9,7 @@ const AddNewUser = (props) => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
   const [error, setError] = useState();
+  const [collegename,setCollegename]=useState("");
   const onSubmitHandler = (event) => {
     event.preventDefault();
     if (username === "" || age === "") {
@@ -26,14 +26,17 @@ const AddNewUser = (props) => {
       });
       return;
     }
-    setUsername("");
-    setAge("");
+    
     const dataObj = {
       user: username,
       age: age,
+      collegename:collegename
     };
     props.onAddData(dataObj);
-    console.log(username, age);
+    setUsername("");
+    setAge("");
+    setCollegename("")
+    console.log(username, age,collegename);
   };
   const ageHandler = (event) => {
     setAge(event.target.value);
@@ -41,14 +44,18 @@ const AddNewUser = (props) => {
   const usernameHandler = (event) => {
     setUsername(event.target.value);
   };
+  const collegenameHandler=(event)=>{
+    setCollegename(event.target.value);
+  }
   const errorHandler = () => {
     setError(null);
     setUsername("");
     setAge("");
+    setCollegename("")
   };
 
   return (
-    <Wrapper>
+    <React.Fragment>
       {error && (
         <Modal
           heading={error.heading}
@@ -58,7 +65,7 @@ const AddNewUser = (props) => {
       )}
       <Card className={classes.input}>
         <form onSubmit={onSubmitHandler}>
-          <label htmlFor="">Username</label>
+          <label htmlFor="username">Username</label>
           <input
             id="username"
             type="text"
@@ -67,10 +74,12 @@ const AddNewUser = (props) => {
           />
           <label htmlFor="age">Age(years)</label>
           <input id="age" type="number" value={age} onChange={ageHandler} />
+          <label htmlFor="clgname">College Name</label>
+          <input id="clgname" type="text" value={collegename} onChange={collegenameHandler}></input>
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-    </Wrapper>
+    </React.Fragment>
   );
 };
 export default AddNewUser;

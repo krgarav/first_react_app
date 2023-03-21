@@ -1,5 +1,4 @@
 import {React,useState} from 'react';
-import './App.css';
 import AddNewUser from './Components/Users/AddNewUser';
 import UserList from './Components/Users/UserList';
 
