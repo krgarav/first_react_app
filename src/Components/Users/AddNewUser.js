@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Wrapper from "../Helpers/Wrapper";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import Modal from "../UI/Modal";
@@ -47,7 +48,7 @@ const AddNewUser = (props) => {
   };
 
   return (
-    <div>
+    <Wrapper>
       {error && (
         <Modal
           heading={error.heading}
@@ -69,7 +70,7 @@ const AddNewUser = (props) => {
           <Button type="submit">Add User</Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 export default AddNewUser;
