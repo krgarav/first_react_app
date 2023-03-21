@@ -1,0 +1,19 @@
+.input {
+  
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+}
+.input input {
+  display: block;
+  margin: 5px;
+  padding: 5px;
+  width: 100%;
+}
+.input label {
+  font-weight: bold;
+  margin: 5px;
+  padding: 5px;
+  display: block;
+}
+
